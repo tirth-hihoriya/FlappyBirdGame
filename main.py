@@ -146,7 +146,7 @@ def maingame():
         FPSCLOCK.tick(FPS) 
 
 def isCollide(playerx, playery, upperPipes, lowerPipes):
-    if playery>GROUNDY - 25 or playery<0:
+    if playery>GROUNDY - 35 or playery<0:
         GAME_SOUNDS['hit'].play()
         return True
 
