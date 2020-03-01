@@ -11,8 +11,8 @@ SCREEN = pygame.display.set_mode((SCREENWIDTH,SCREENHEIGHT))   # initialize scre
 GROUNDY = SCREENHEIGHT * 0.8
 GAME_SPRITES  = {}
 GAME_SOUNDS = {}
-PLAYER = './sprites/fb4.png'
-BACKGROUND = './sprites/bg_flappy_bird.png'
+PLAYER = './sprites/bird.png'
+BACKGROUND = './sprites/bg.png'
 PIPE = './sprites/pipe.png'
 
 def welcomeScreen():
@@ -170,18 +170,18 @@ if __name__=="__main__":
     FPSCLOCK = pygame.time.Clock()
     pygame.display.set_caption('Flappy Bird by Tirth Hihoriya')
     GAME_SPRITES['numbers'] = (
-        pygame.image.load('./sprites/zero.png').convert_alpha(),  
-        pygame.image.load('./sprites/one.png').convert_alpha(),  
-        pygame.image.load('./sprites/two.png').convert_alpha(),  
-        pygame.image.load('./sprites/three.png').convert_alpha(),  
-        pygame.image.load('./sprites/four.png').convert_alpha(),  
-        pygame.image.load('./sprites/five.png').convert_alpha(),  
-        pygame.image.load('./sprites/six.png').convert_alpha(),  
-        pygame.image.load('./sprites/seven.png').convert_alpha(),  
-        pygame.image.load('./sprites/eight.png').convert_alpha(),  
-        pygame.image.load('./sprites/nine.png').convert_alpha()
+        pygame.image.load('./sprites/0.png').convert_alpha(),  
+        pygame.image.load('./sprites/1.png').convert_alpha(),  
+        pygame.image.load('./sprites/2.png').convert_alpha(),  
+        pygame.image.load('./sprites/3.png').convert_alpha(),  
+        pygame.image.load('./sprites/4.png').convert_alpha(),  
+        pygame.image.load('./sprites/5.png').convert_alpha(),  
+        pygame.image.load('./sprites/6.png').convert_alpha(),  
+        pygame.image.load('./sprites/7.png').convert_alpha(),  
+        pygame.image.load('./sprites/8.png').convert_alpha(),  
+        pygame.image.load('./sprites/9.png').convert_alpha()
     )
-    GAME_SPRITES['message'] = pygame.image.load('./sprites/msg.jpg').convert_alpha()
+    GAME_SPRITES['message'] = pygame.image.load('./sprites/msg.png').convert_alpha()
     GAME_SPRITES['base'] = pygame.image.load('./sprites/base.png').convert_alpha()
     GAME_SPRITES['pipe'] = (
         pygame.transform.rotate(pygame.image.load(PIPE).convert_alpha(),180),
