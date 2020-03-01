@@ -11,8 +11,8 @@ SCREEN = pygame.display.set_mode((SCREENWIDTH,SCREENHEIGHT))   # initialize scre
 GROUNDY = SCREENHEIGHT * 0.8
 GAME_SPRITES  = {}
 GAME_SOUNDS = {}
-PLAYER = './sprites/bird.png'
-BACKGROUND = './sprites/bg.png'
+PLAYER = './sprites/fb3.png'
+BACKGROUND = './sprites/bg_flappy_bird.png'
 PIPE = './sprites/pipe.png'
 
 def welcomeScreen():
@@ -84,7 +84,7 @@ def maingame():
                 if playery > 0:
                     playerVelY = playerFlapAccv
                     playerFlapped = True
-                    # GAME_SOUNDS['wing'].play()
+                    GAME_SOUNDS['wing'].play()
 
 
         crashTest = isCollide(playerx, playery, upperPipes, lowerPipes) # This function will return true if the player is crashed
@@ -98,7 +98,7 @@ def maingame():
             if pipeMidPos<= playerMidPos < pipeMidPos +4:
                 score +=1
                 print(f"Your score is {score}") 
-                # GAME_SOUNDS['point'].play()
+                GAME_SOUNDS['point'].play()
 
 
         if playerVelY <playerMaxVelY and not playerFlapped:
@@ -147,20 +147,20 @@ def maingame():
 
 def isCollide(playerx, playery, upperPipes, lowerPipes):
     if playery>GROUNDY - 25 or playery<0:
-        # GAME_SOUNDS['hit'].play()
+        GAME_SOUNDS['hit'].play()
         return True
 
     for pipe in upperPipes:
         pipeHeight = GAME_SPRITES['pipe'][0].get_height()
         if(playery < pipeHeight + pipe['y'] and (abs(playerx - pipe['x'])) < GAME_SPRITES['pipe'][0].get_width()):
-            # GAME_SOUNDS['hit'].play()
+            GAME_SOUNDS['hit'].play()
             return True
 
     for pipe in lowerPipes:
         pipeHeight = GAME_SPRITES['pipe'][0].get_height()
         playerHeight = GAME_SPRITES['player'].get_height()
         if(playery + playerHeight > pipe['y'] and (abs(playerx - pipe['x'])) < GAME_SPRITES['pipe'][1].get_width()):
-            # GAME_SOUNDS['hit'].play()
+            GAME_SOUNDS['hit'].play()
             return True
 
     return False
@@ -200,8 +200,8 @@ if __name__=="__main__":
         pygame.image.load('./sprites/8.png').convert_alpha(),  
         pygame.image.load('./sprites/9.png').convert_alpha()
     )
-    GAME_SPRITES['message'] = pygame.image.load('./sprites/msg.png').convert_alpha()
-    GAME_SPRITES['base'] = pygame.image.load('./sprites/base.png').convert_alpha()
+    GAME_SPRITES['message'] = pygame.image.load('./sprites/msgTH.png').convert_alpha()
+    GAME_SPRITES['base'] = pygame.image.load('./sprites/base3.png').convert_alpha()
     GAME_SPRITES['pipe'] = (
         pygame.transform.rotate(pygame.image.load(PIPE).convert_alpha(),180),
         pygame.image.load(PIPE).convert_alpha()
@@ -209,11 +209,11 @@ if __name__=="__main__":
     
 # Game sounds
 
-# GAME_SOUNDS['die'] = pygame.mixer.Sound('./sprites/die.mp3')
-# GAME_SOUNDS['hit'] = pygame.mixer.Sound('./sprites/die.mp3')
-# GAME_SOUNDS['point'] = pygame.mixer.Sound('./sprites/flap2.mp3')
-# GAME_SOUNDS['swoosh'] = pygame.mixer.Sound('./sprites/flap2.mp3')
-# GAME_SOUNDS['wing'] = pygame.mixer.Sound('./sprites/flap.mp3')
+GAME_SOUNDS['die'] = pygame.mixer.Sound('./audio/die.wav')
+GAME_SOUNDS['hit'] = pygame.mixer.Sound('./audio/hit.wav')
+GAME_SOUNDS['point'] = pygame.mixer.Sound('./audio/point.wav')
+GAME_SOUNDS['swoosh'] = pygame.mixer.Sound('./audio/swoosh.wav')
+GAME_SOUNDS['wing'] = pygame.mixer.Sound('./audio/wing.wav')
 
 GAME_SPRITES['background'] = pygame.image.load(BACKGROUND).convert()
 GAME_SPRITES['player'] = pygame.image.load(PLAYER).convert_alpha()
